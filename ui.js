@@ -37,6 +37,29 @@ class UI {
     `;
   }
 
+  showRepos(repos) {
+    let output = '';
+    
+    repos.forEach((repo) => {
+      output += `
+      <div class="card card-body mb-2>
+        <div class="row">
+          <div class="col-md-6">
+            <a href="${repo.name}" target="_blank">${repo.name}</a>
+          </div>
+          <div class="col-md-6">
+            <span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>
+            <span class="badge badge-secondary">Forks: ${repo.forks_count}</span>
+            <span class="badge badge-success">Watchers: ${repo.watchers_count}</span>
+          </div>
+        </div>
+      </div>      
+      `;
+    })
+
+    document.querySelector('#repos').innerHTML = output;
+  }
+
   showAlert(msg, className) {
     this.clearAlert();
 
